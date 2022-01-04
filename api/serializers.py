@@ -3,6 +3,11 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
 from .models import *
 
+class ClientSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Client
+        fields = '__all__'
+
 class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel

@@ -14,6 +14,12 @@ from .models import *
 class TokenPairView(TokenObtainPairView):
 	serializer_class = TokenPairSerializer
 
+class ClientViewset(viewsets.ModelViewSet):
+	serializer_class = ClientSerializer
+	queryset = Client.objects.all()
+	authentication_classes = [JWTAuthentication, SessionAuthentication]
+	permission_classes = [IsAuthenticated]
+
 class HotelViewset(viewsets.ModelViewSet):
 	serializer_class = HotelSerializer
 	queryset = Hotel.objects.all()

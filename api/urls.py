@@ -7,6 +7,7 @@ from .views import *
 
 router = routers.DefaultRouter()
 
+router.register("client", ClientViewset)
 router.register("hotel", HotelViewset)
 router.register("chambre", ChambreViewset)
 router.register("Reservation", ReservationViewset)
