@@ -20,21 +20,23 @@ class Hotel(models.Model):
 		return f"{self.nom} {self.photo_couverture}"
 
 class Chambre(models.Model):
+	type_chambre = models.CharField(max_length=30)
 	numero = models.PositiveBigIntegerField( default=0 )
 	pic_chambr1 = models.ImageField()
 	pic_chambr2 = models.ImageField()
 	pic_chambr3 = models.ImageField()
+	nbre_personnes = models.PositiveSmallIntegerField()
+	
+
+	def __str__(self):
+		return f"{self.numero} { self.type_chambre} "
+
+class Reservation(models.Model):
 	date_arrivee = models.DateField()
 	date_depart = models.DateField()
-	nbre_personnes = models.PositiveSmallIntegerField()
+	client = models.ForeignKey(Client, on_delete=models.PROTECT)
+	chambre = models.ForeignKey(Chambre, on_delete=models.CASCADE)
 	reservee = models.BooleanField()
 
 	def __str__(self):
-		return f"chambre {self.numero} est reservé du { self.date_arrivee} au { self.date_depart} "
-
-class Reservation(models.Model):
-	client = models.ForeignKey(Client, on_delete=models.PROTECT)
-	chambre = models.ForeignKey(Chambre, on_delete=models.CASCADE)
-
-	def __str__(self):
-		return f"{self.user.first_name} {self.chambre}"
+		return f"chambre N° {self.numero} est reservé du { self.date_arrivee} au { self.date_depart} par {self.client_fullname} "
