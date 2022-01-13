@@ -12,7 +12,11 @@ class HotelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Hotel
         fields = '__all__'
-
+        
+class ValeurAjouteeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ValeurAjoutee
+        fields = '__all__'
 
 class ChambreSerializer(serializers.ModelSerializer):
     class Meta:

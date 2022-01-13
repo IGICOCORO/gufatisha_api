@@ -19,6 +19,13 @@ class Hotel(models.Model):
 	def __str__(self):
 		return f"{self.nom} {self.photo_couverture}"
 
+class ValeurAjoutee(models.Model):
+	hotel_id= models.ForeignKey(Hotel,on_delete=models.PROTECT)
+	nom_valeur = models.CharField(max_length=30)
+
+	def __str__(self):
+		return self.nom_valeur
+
 class Chambre(models.Model):
 	type_chambre = models.CharField(max_length=30)
 	numero = models.PositiveBigIntegerField( default=0 )

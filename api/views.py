@@ -26,6 +26,11 @@ class HotelViewset(viewsets.ModelViewSet):
 	authentication_classes = [JWTAuthentication, SessionAuthentication]
 	permission_classes = [IsAuthenticated]
 
+class ValeurAjouteeViewset(viewsets.ModelViewSet):
+	serializer_class = ValeurAjouteeSerializer
+	queryset = ValeurAjoutee.objects.all()
+	authentication_classes = [JWTAuthentication, SessionAuthentication]
+	permission_classes = [IsAuthenticated]
 
 class ChambreViewset(viewsets.ModelViewSet):
 	serializer_class = ChambreSerializer
