@@ -15,6 +15,7 @@ class Hotel(models.Model):
 	nom = models.CharField(max_length=30,blank=False)
 	photo_couverture = models.ImageField()
 	chambre = models.ForeignKey("Chambre",on_delete=models.PROTECT)
+	ValeurAjoutee = models.ForeignKey("ValeurAjoutee",on_delete=models.PROTECT)
 
 	def __str__(self):
 		return f"{self.nom} {self.photo_couverture}"
