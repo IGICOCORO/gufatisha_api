@@ -5,7 +5,10 @@ from django.utils import timezone
 # Create your models here.
 
 class Client(models.Model):
-	fullname = models.CharField(max_length=30)
+	nom = models.CharField(max_length=30)
+	prenom = models.CharField(max_length=30)
+	provenance = models.CharField(max_length=30)
+	phone = models.CharField(max_length=30)
 	email = models.CharField(max_length=30)
 
 	def __str__(self):
@@ -21,7 +24,6 @@ class Hotel(models.Model):
 		return f"{self.nom} {self.photo_couverture}"
 
 class ValeurAjoutee(models.Model):
-	hotel_id= models.ForeignKey(Hotel,on_delete=models.PROTECT)
 	nom_valeur = models.CharField(max_length=30)
 
 	def __str__(self):
@@ -34,6 +36,7 @@ class Chambre(models.Model):
 	pic_chambr2 = models.ImageField()
 	pic_chambr3 = models.ImageField()
 	nbre_personnes = models.PositiveSmallIntegerField()
+	prix = models.PositiveIntegerField(default=0)
 	
 
 	def __str__(self):
