@@ -15,16 +15,16 @@ class Client(models.Model):
 		return f"{self.fullname} {self.email}"
 
 class Hotel(models.Model):
-	nom = models.CharField(max_length=30,blank=False)
+	nom_hotel = models.CharField(max_length=30,blank=False)
 	photo_couverture = models.ImageField()
-	chambre = models.ForeignKey("Chambre",on_delete=models.PROTECT)
-	ValeurAjoutee = models.ForeignKey("ValeurAjoutee",on_delete=models.PROTECT)
-
+	
 	def __str__(self):
 		return f"{self.nom} {self.photo_couverture}"
 
 class ValeurAjoutee(models.Model):
 	nom_valeur = models.CharField(max_length=30)
+	hotel = models.ForeignKey("Hotel",on_delete=models.PROTECT)
+
 
 	def __str__(self):
 		return self.nom_valeur
@@ -37,6 +37,7 @@ class Chambre(models.Model):
 	pic_chambr3 = models.ImageField()
 	nbre_personnes = models.PositiveSmallIntegerField()
 	prix = models.PositiveIntegerField(default=0)
+	hotel = models.ForeignKey("Hotel",on_delete=models.PROTECT)
 	
 
 	def __str__(self):

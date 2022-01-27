@@ -8,15 +8,21 @@ class ClientSerializer(serializers.ModelSerializer):
         model = Client
         fields = '__all__'
 
-class HotelSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Hotel
-        fields = '__all__'
-        
 class ValeurAjouteeSerializer(serializers.ModelSerializer):
     class Meta:
         model = ValeurAjoutee
         fields = '__all__'
+
+class HotelSerializer(serializers.ModelSerializer):
+
+    def to_representation(self, obj):
+        rep = super().to_representation(obj)
+        rep["hotel"] = obj.hotel
+        return rep
+    class Meta:
+        model = Hotel
+        fields = '__all__'
+        
 
 class ChambreSerializer(serializers.ModelSerializer):
     class Meta:
