@@ -14,11 +14,13 @@ class ValeurAjouteeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class HotelSerializer(serializers.ModelSerializer):
-
+   
     def to_representation(self, obj):
         rep = super().to_representation(obj)
-        rep["hotel"] = obj.hotel
+        valeurs = ValeurAjoutee.objects.filter(hotel=obj)
+        rep["valeurs"] = ValeurAjouteeSerializer(valeurs,many=True).data
         return rep
+
     class Meta:
         model = Hotel
         fields = '__all__'

@@ -12,10 +12,10 @@ class Client(models.Model):
 	email = models.CharField(max_length=30)
 
 	def __str__(self):
-		return f"{self.fullname} {self.email}"
+		return f"{self.nom} {self.prenom} {self.provenance} {self.phone} {self.email}"
 
 class Hotel(models.Model):
-	nom_hotel = models.CharField(max_length=30,blank=False)
+	nom = models.CharField(max_length=30,blank=False)
 	photo_couverture = models.ImageField()
 	
 	def __str__(self):

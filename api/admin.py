@@ -15,8 +15,8 @@ class ValeurAjouteeAdmin(admin.ModelAdmin):
 
 @admin.register(Hotel)
 class HotelAdmin(admin.ModelAdmin):
-	list_display = "nom_hotel", "photo_couverture", "chambre"
-	search_fields = "nom_hotel", 
+	list_display = "nom", "photo_couverture", "chambre"
+	search_fields = "nom", 
     
 
 @admin.register(Chambre)
