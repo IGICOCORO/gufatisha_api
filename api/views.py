@@ -21,7 +21,7 @@ class ClientViewset(viewsets.ModelViewSet):
 	permission_classes = [IsAuthenticated]
 
 class HotelViewset(viewsets.ModelViewSet):
-	serializer_class = HotelSerializer
+	serializer_class = HotelSerializer0
 	queryset = Hotel.objects.all()
 	authentication_classes = [JWTAuthentication, SessionAuthentication]
 	permission_classes = [IsAuthenticated]
