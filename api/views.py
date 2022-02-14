@@ -38,7 +38,6 @@ class ChambreViewset(viewsets.ModelViewSet):
 	authentication_classes = [JWTAuthentication, SessionAuthentication]
 	permission_classes = [IsAuthenticated]
 
-
 class ReservationViewset(viewsets.ModelViewSet):
 	serializer_class = ReservationSerializer
 	queryset = Reservation.objects.all()

@@ -4,12 +4,12 @@ from .models import *
 # Register your models here.
 @admin.register(Client)
 class ClientAdmin(admin.ModelAdmin):
-	list_display = "nom","email"
-	search_fields = "nom", 
+	list_display = "nom","prenom","provenance","phone","email",
+	search_fields =  "nom","prenom","provenance","phone"
 
 @admin.register(ValeurAjoutee)
 class ValeurAjouteeAdmin(admin.ModelAdmin):
-	list_display = "nom_valeur",
+	list_display = "nom_valeur","icon"
 	search_fields = "nom_valeur", 
     
 
@@ -21,10 +21,10 @@ class HotelAdmin(admin.ModelAdmin):
 
 @admin.register(Chambre)
 class ChambreAdmin(admin.ModelAdmin):
-	list_display = "numero","nbre_personnes"
-	search_fields = "nbre_personnes",
+	list_display = "numero","nbre_personnes","type_chambre","prix"
+	search_fields = "nbre_personnes","type_chambre","prix"
 
 @admin.register(Reservation)
 class ReservationAdmin(admin.ModelAdmin):
-	list_display = "client", "chambre"
-	search_fields = "client_fullname", 
+	list_display = "client", "chambre","date_arrivee","date_depart"
+	search_fields = "date_arrivee", 
