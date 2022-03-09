@@ -9,7 +9,7 @@ class ClientAdmin(admin.ModelAdmin):
 
 @admin.register(ValeurAjoutee)
 class ValeurAjouteeAdmin(admin.ModelAdmin):
-	list_display = "nom_valeur","icon"
+	list_display = "nom_valeur",
 	search_fields = "nom_valeur", 
     
 
