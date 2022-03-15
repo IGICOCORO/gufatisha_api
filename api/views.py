@@ -1,12 +1,15 @@
 from typing import List
 
 from rest_framework import viewsets
+from rest_framework.filters import SearchFilter,OrderingFilter
 from rest_framework.decorators import action
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated,AllowAny
 
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.views import TokenObtainPairView
+
+from django_filters.rest_framework import DjangoFilterBackend
 
 from .serializers import *
 from .models import *
@@ -37,6 +40,12 @@ class ChambreViewset(viewsets.ModelViewSet):
 	queryset = Chambre.objects.all()
 	authentication_classes = [JWTAuthentication, SessionAuthentication]
 	permission_classes = [AllowAny]
+	filter_backends = [DjangoFilterBackend]
+	ordering_fields = 'hotel__id'
+	search_fields = ['hotel__nom','hotel__id']
+	filterset_fields = {
+		'hotel__id':['exact'],
+	}
 
 class ReservationViewset(viewsets.ModelViewSet):
 	serializer_class = ReservationSerializer
