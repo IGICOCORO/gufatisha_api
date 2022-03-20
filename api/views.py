@@ -52,3 +52,9 @@ class ReservationViewset(viewsets.ModelViewSet):
 	queryset = Reservation.objects.all()
 	authentication_classes = [JWTAuthentication, SessionAuthentication]
 	permission_classes = [AllowAny]
+	filter_backends = [DjangoFilterBackend]
+	ordering_fields = 'client__phone'
+	search_fields = ['id','client__nom','client__phone']
+	filterset_fields = {
+		'client__phone':['exact'],
+	}

@@ -32,9 +32,22 @@ class ChambreSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ReservationSerializer(serializers.ModelSerializer):
+    client = ClientSerializer()
     class Meta:
         model = Reservation
         fields = '__all__'
+
+
+    def create(self, validated_data):
+        client = Client.objects.create(**validated_data.pop('client'))
+        instance = Reservation.objects.create(client= client,**validated_data)
+        return instance
+
+    def to_representation(self, obj):
+        rep = super().to_representation(obj)
+        rep["chambre"] = ChambreSerializer(obj.chambre).data
+        return rep
+
     
 class TokenPairSerializer(TokenObtainPairSerializer):
 

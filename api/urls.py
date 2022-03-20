@@ -16,8 +16,5 @@ router.register("chambre", ChambreViewset)
 router.register("Reservation", ReservationViewset)
 
 urlpatterns = [
-    path('', include(router.urls)),
-    path('login/', TokenPairView.as_view()),
-    path('refresh/', TokenRefreshView.as_view()),
-    path('api-auth/', include('rest_framework.urls')),
+    path('', include(router.urls))
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

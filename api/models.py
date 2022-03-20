@@ -8,7 +8,7 @@ class Client(models.Model):
 	prenom = models.CharField(max_length=30)
 	provenance = models.CharField(max_length=30)
 	phone = models.CharField(max_length=30)
-	email = models.CharField(max_length=30)
+	email = models.EmailField()
 
 	def __str__(self):
 		return f"{self.nom} {self.prenom} {self.provenance} {self.phone} {self.email}"
